@@ -30,7 +30,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Layout */
+
 .layout-wrapper {
     display: flex;
     flex: 1;
@@ -66,7 +66,7 @@ body {
     padding: 1rem;
 }
 
-/* Ad Placeholders */
+
 .ad-placeholder {
     width: 160px;
     height: 600px;
@@ -86,7 +86,7 @@ body {
     height: 90px;
 }
 
-/* Mobile responsive ads */
+
 @media (max-width: 1100px) {
     .ad-space { display: none; }
 }
@@ -94,7 +94,7 @@ body {
     .ad-placeholder.horizontal { width: 320px; height: 50px; }
 }
 
-/* App Container */
+
 .app-container {
     width: 100%;
     max-width: 900px;
@@ -119,7 +119,7 @@ body {
     }
 }
 
-/* Steps Transition */
+
 .step-container {
     animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     display: flex;
@@ -133,7 +133,7 @@ body {
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Typography */
+
 h1, h2, h3 {
     font-family: var(--font-heading);
     font-weight: 700;
@@ -158,7 +158,7 @@ h1, h2, h3 {
     line-height: 1.6;
 }
 
-/* Buttons */
+
 .btn {
     align-self: flex-start;
     background: rgba(0, 212, 255, 0.1);
@@ -223,14 +223,40 @@ h1, h2, h3 {
     transform: translateY(-2px) scale(1.05);
 }
 
+.btn-nav-prev {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-nav-prev:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px) scale(1.05);
+}
+
 @media (max-width: 600px) {
     .btn-nav-next {
         bottom: 2rem;
         right: 2rem;
     }
+    .btn-nav-prev {
+        bottom: 2rem;
+        left: 2rem;
+    }
 }
 
-/* Cards & Information */
+
 .info-card {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -270,7 +296,7 @@ h1, h2, h3 {
     max-width: 100%;
 }
 
-/* Instruction Timeline UI */
+
 .timeline {
     position: relative;
     margin: 2rem 0;
@@ -312,7 +338,7 @@ h1, h2, h3 {
     font-size: 1rem;
     flex-shrink: 0;
     box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-    margin-left: -15px; /* Pull left over the timeline line */
+    margin-left: -15px; 
 }
 
 .timeline-content {
@@ -338,7 +364,7 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-/* File Structure Example */
+
 .file-tree {
     background: rgba(0,0,0,0.3);
     font-family: monospace;
@@ -353,7 +379,7 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-/* Dropzones */
+
 .upload-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -415,7 +441,7 @@ h1, h2, h3 {
     display: none;
 }
 
-/* Loader */
+
 .loader-container {
     display: flex;
     flex-direction: column;
@@ -438,7 +464,7 @@ h1, h2, h3 {
     100% { transform: rotate(360deg); }
 }
 
-/* Results Dashboard */
+
 .results-header {
     display: flex;
     justify-content: space-between;
@@ -527,7 +553,7 @@ h1, h2, h3 {
     padding-right: 10px;
 }
 
-/* Srollbar styling */
+
 .user-grid::-webkit-scrollbar { width: 6px; }
 .user-grid::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
 .user-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
@@ -582,7 +608,7 @@ h1, h2, h3 {
     color: var(--text-secondary);
 }
 
-/* Language Switcher */
+
 .lang-switcher {
     position: absolute;
     top: 2rem;
