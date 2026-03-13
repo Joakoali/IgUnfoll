@@ -214,9 +214,11 @@ function step1() {
             <i class="ph ph-shield-check" style="font-size: 1.5rem;"></i>
             <span><strong>${_t('step1_privacy1')}</strong><br>${_t('step1_privacy2')}</span>
         </div>
-        <button id="nextBtn" class="btn btn-nav-next">
-            <i class="ph ph-arrow-right"></i>
-        </button>
+        <div class="nav-buttons-container right-only">
+            <button id="nextBtn" class="btn btn-nav-next" title="Siguiente">
+                <i class="ph ph-arrow-right"></i>
+            </button>
+        </div>
     `;
 }
 function step2() {
@@ -272,12 +274,14 @@ function step2() {
         <p style="color: var(--text-secondary); font-size: 0.85rem;">
             <i class="ph ph-envelope-simple"></i> ${_t('step2_wait')}
         </p>
-        <button id="prevBtn" class="btn btn-nav-prev" title="Volver">
-            <i class="ph ph-arrow-left"></i>
-        </button>
-        <button id="nextBtn" class="btn btn-nav-next">
-            <i class="ph ph-arrow-right"></i>
-        </button>
+        <div class="nav-buttons-container">
+            <button id="prevBtn" class="btn btn-nav-prev" title="Volver">
+                <i class="ph ph-arrow-left"></i>
+            </button>
+            <button id="nextBtn" class="btn btn-nav-next" title="Siguiente">
+                <i class="ph ph-arrow-right"></i>
+            </button>
+        </div>
     `;
 }
 function step3() {
@@ -292,14 +296,14 @@ function step3() {
                 <input type="file" id="input-zip" class="file-input" accept=".zip">
             </div>
         </div>
-        <div style="display:flex; justify-content: flex-end; width:100%; margin-top:1rem;">
+        <div class="nav-buttons-container">
+            <button id="prevBtn" class="btn btn-nav-prev" title="Volver">
+                <i class="ph ph-arrow-left"></i>
+            </button>
             <button id="analyzeBtn" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius:16px;" ${!state.files.zip ? 'disabled' : ''}>
                 ${_t('step3_analyze')} <i class="ph ph-arrow-right"></i>
             </button>
         </div>
-        <button id="prevBtn" class="btn btn-nav-prev" title="Volver">
-            <i class="ph ph-arrow-left"></i>
-        </button>
     `;
 }
 function step4() {

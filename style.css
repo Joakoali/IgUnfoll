@@ -202,58 +202,48 @@ h1, h2, h3 {
     box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
 }
 
-.btn-nav-next {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
+.nav-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 2rem;
+    width: 100%;
+}
+.nav-buttons-container.right-only {
+    justify-content: flex-end;
+}
+.btn-nav-next, .btn-nav-prev {
     border-radius: 50%;
     width: 60px;
     height: 60px;
     padding: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-nav-next {
     background: linear-gradient(135deg, var(--electric-blue), var(--subtle-purple));
     color: white;
-    border: none;
     box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
 }
-
 .btn-nav-next:hover {
     box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
     transform: translateY(-2px) scale(1.05);
 }
-
 .btn-nav-prev {
-    position: absolute;
-    bottom: 3rem;
-    left: 3rem;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    padding: 0;
-    justify-content: center;
-    font-size: 1.5rem;
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
 }
-
 .btn-nav-prev:hover {
     color: white;
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px) scale(1.05);
-}
-
-@media (max-width: 600px) {
-    .btn-nav-next {
-        bottom: 2rem;
-        right: 2rem;
-    }
-    .btn-nav-prev {
-        bottom: 2rem;
-        left: 2rem;
-    }
 }
 
 
@@ -642,5 +632,41 @@ h1, h2, h3 {
     .lang-switcher {
         top: 1rem;
         right: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+    .title-gradient {
+        font-size: 2rem;
+    }
+    .timeline {
+        margin: 1.5rem 0;
+        gap: 1rem;
+    }
+    .timeline-content {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+    .btn-nav-next, .btn-nav-prev {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+    .nav-buttons-container {
+        padding-top: 1.5rem;
+    }
+    .info-card {
+        padding: 1.2rem;
+        font-size: 0.9rem;
+    }
+    .dropzone {
+        padding: 2rem 1rem;
+    }
+    .dropzone i {
+        font-size: 2.5rem;
     }
 }
