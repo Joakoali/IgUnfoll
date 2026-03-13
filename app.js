@@ -1,17 +1,125 @@
+// Translations Dictionary
+const t = {
+    en: {
+        step1_title: "Find Your Instagram Unfollowers",
+        step1_subtitle: "Analyze your Instagram data privately. Everything runs locally in your browser.",
+        step1_how_it_works: "How it works",
+        step1_desc1: "The tool examines your Instagram backup and compares:",
+        step1_list1: "Your Followers list",
+        step1_list2: "Your Following list",
+        step1_desc2: "To automatically find:",
+        step1_list3: "Accounts you follow that don't follow you back",
+        step1_privacy1: "No login required. No Instagram permissions needed.",
+        step1_privacy2: "Your data never leaves your device.",
+        
+        step2_title: "How to Download Your Data",
+        step2_subtitle: "Follow these steps in the Instagram app on your mobile:",
+        step2_s1: "Settings",
+        step2_s2: "Accounts Center",
+        step2_s3: "Your information and permissions",
+        step2_s4: "Download your information",
+        step2_s5: "Download or transfer information",
+        step2_s6: "Choose your Instagram account",
+        step2_s7: "Download to device",
+        step2_s8: "<strong>Customize information:</strong> Uncheck everything and select only \"Connections\" (Followers and following)",
+        step2_s9: "Date range: \"All time\"",
+        step2_s10: "Format: <strong>JSON</strong>",
+        step2_s11: "Create file",
+        step2_wait: "Instagram will send you an email with your ZIP file when it's ready (Usually takes a few minutes).",
+
+        step3_title: "Upload the ZIP File",
+        step3_subtitle: "Upload the <strong>.zip</strong> file you downloaded from Instagram directly. You don't need to unzip it.",
+        step3_file_ready: "File Ready",
+        step3_upload_zip: "Upload ZIP File",
+        step3_drag: "Drag your file here or click to browse",
+        step3_analyze: "Analyze Data",
+        step3_invalid: "Please upload a valid ZIP file.",
+
+        step4_analyzing: "Analyzing your data...",
+        step4_desc: "Unzipping and safely comparing followers.",
+        step4_error_lib: "JSZip library not loaded. Please ensure you have an Internet connection to process the ZIP.",
+        step4_error_files: "We couldn't find 'followers_1.json' and 'following.json' inside the ZIP. Make sure you selected to export 'Followers and following'.",
+        step4_error_generic: "Error processing the file: ",
+
+        step5_title: "Your Results",
+        step5_subtitle: "Analysis completed successfully.",
+        step5_download: "Download List",
+        step5_tab1: "Not Following Back",
+        step5_tab2: "Your Fans",
+        step5_tab3: "Mutuals",
+        step5_search: "Search username...",
+        step5_empty: "No users found in this category.",
+        step5_start_over: "Start Over",
+        step5_export_header: "Instagram Users List"
+    },
+    es: {
+        step1_title: "Encuentra tus Unfollowers",
+        step1_subtitle: "Analiza tus datos de Instagram de forma privada. Todo se ejecuta localmente en tu navegador.",
+        step1_how_it_works: "Cómo funciona",
+        step1_desc1: "La herramienta examina tu copia de seguridad de Instagram y compara:",
+        step1_list1: "Tu lista de Seguidores",
+        step1_list2: "Tu lista de Seguidos",
+        step1_desc2: "Para encontrar automáticamente:",
+        step1_list3: "Cuentas que sigues pero que no te siguen de vuelta",
+        step1_privacy1: "Sin iniciar sesión. No requiere permisos de Instagram.",
+        step1_privacy2: "Tus datos nunca salen de tu dispositivo.",
+        
+        step2_title: "Cómo descargar tus datos",
+        step2_subtitle: "Sigue estos pasos en la app de Instagram desde tu móvil:",
+        step2_s1: "Configuración",
+        step2_s2: "Centro de cuentas",
+        step2_s3: "Tu información y permisos",
+        step2_s4: "Descargar tu información",
+        step2_s5: "Descargar o transferir información",
+        step2_s6: "Elige tu cuenta de Instagram",
+        step2_s7: "Descargar al dispositivo",
+        step2_s8: "<strong>Personalizar información:</strong> Quita todo y selecciona solo \"Conexiones\" (Seguidores y seguidos)",
+        step2_s9: "Intervalo de fechas: \"Desde el principio\"",
+        step2_s10: "Formato: <strong>JSON</strong>",
+        step2_s11: "Crear archivo",
+        step2_wait: "Instagram te enviará un email con tu archivo ZIP cuando esté listo (Suele tardar minutos).",
+
+        step3_title: "Sube el Archivo ZIP",
+        step3_subtitle: "Sube el archivo <strong>.zip</strong> que descargaste de Instagram directamente. No necesitas descomprimirlo.",
+        step3_file_ready: "Archivo Listo",
+        step3_upload_zip: "Subir Archivo ZIP",
+        step3_drag: "Arrastra aquí tu archivo o haz clic para buscar",
+        step3_analyze: "Analizar Datos",
+        step3_invalid: "Por favor, sube un archivo ZIP válido.",
+
+        step4_analyzing: "Analizando tus datos...",
+        step4_desc: "Descomprimiendo y comparando seguidores de forma segura.",
+        step4_error_lib: "Librería JSZip no cargada. Por favor, asegúrate de tener conexión a Internet para procesar el ZIP.",
+        step4_error_files: "No pudimos encontrar 'followers_1.json' y 'following.json' dentro del ZIP. Asegúrate de haber seleccionado exportar 'Seguidores y seguidos'.",
+        step4_error_generic: "Error al procesar el archivo: ",
+
+        step5_title: "Tus Resultados",
+        step5_subtitle: "Análisis completado con éxito.",
+        step5_download: "Descargar Lista",
+        step5_tab1: "No te siguen",
+        step5_tab2: "Tus Fans",
+        step5_tab3: "Mutuos",
+        step5_search: "Buscar usuario...",
+        step5_empty: "No se encontraron usuarios en esta categoría.",
+        step5_start_over: "Volver a empezar",
+        step5_export_header: "Lista de Usuarios de Instagram"
+    }
+};
+
 // State
 let state = {
     step: 1,
+    lang: 'en', // default language
     files: {
-        followers: null,
-        following: null
+        zip: null
     },
     parsedData: {
         followers: [],
         following: []
     },
     results: {
-        unfollowers: [], // Following but not followers (They don't follow you back)
-        fans: [],        // Followers but not following (You don't follow them back)
+        unfollowers: [], // Following but not followers
+        fans: [],        // Followers but not following
         mutuals: []      // Both
     },
     activeTab: 'unfollowers',
@@ -21,12 +129,16 @@ let state = {
 // DOM Elements
 const appContainer = document.getElementById('app');
 
-// Utilities
-const createElement = (htmlString) => {
-    const div = document.createElement('div');
-    div.innerHTML = htmlString.trim();
-    return div.firstChild;
+// Language toggle function (Called directly from HTML buttons)
+window.setLanguage = function(lang) {
+    state.lang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    render(); // Re-render app with new language
 };
+
+// Helper to get translated string
+const _t = (key) => t[state.lang][key];
 
 // App rendering logic
 function render() {
@@ -36,10 +148,9 @@ function render() {
     switch(state.step) {
         case 1: stepContent = step1(); break;
         case 2: stepContent = step2(); break;
-        case 3: stepContent = step3(); break;
-        case 4: stepContent = step4(); break;
-        case 5: stepContent = step5(); break;
-        case 6: stepContent = step6(); break;
+        case 3: stepContent = step3(); break; // Upload
+        case 4: stepContent = step4(); break; // Processing
+        case 5: stepContent = step5(); break; // Results
     }
 
     const wrapper = document.createElement('div');
@@ -58,26 +169,31 @@ function nextStep() {
 }
 
 function attachEventsForStep(step) {
-    if (step <= 3) {
+    if (step <= 2) {
         const nextBtn = document.getElementById('nextBtn');
         if (nextBtn) nextBtn.addEventListener('click', nextStep);
-    } else if (step === 4) {
-        setupDropzones();
+    } else if (step === 3) {
+        setupDropzone();
         const analyzeBtn = document.getElementById('analyzeBtn');
         if (analyzeBtn) {
             analyzeBtn.addEventListener('click', () => {
-                if (state.files.followers && state.files.following) {
+                if (state.files.zip) {
                     nextStep(); // Go to processing
                     processFiles(); // Start processing
                 }
             });
         }
-    } else if (step === 6) {
+    } else if (step === 5) {
         // Tab switching
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                state.activeTab = e.target.dataset.tab;
-                render(); // Re-render results
+                // Update active class
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                const clickedBtn = e.target.closest('.tab-btn');
+                clickedBtn.classList.add('active');
+                
+                state.activeTab = clickedBtn.dataset.tab;
+                renderUsers(); // Just update user grid
             });
         });
 
@@ -103,28 +219,28 @@ function attachEventsForStep(step) {
 // Steps Templates
 function step1() {
     return `
-        <h1 class="title-gradient">Find Your Instagram Unfollowers</h1>
-        <p class="subtitle">Analyze your Instagram data privately. Everything runs locally in your browser.</p>
+        <h1 class="title-gradient">${_t('step1_title')}</h1>
+        <p class="subtitle">${_t('step1_subtitle')}</p>
         
         <div class="info-card">
-            <h3>How it works</h3>
-            <p>The tool compares your:</p>
+            <h3>${_t('step1_how_it_works')}</h3>
+            <p>${_t('step1_desc1')}</p>
             <ul>
-                <li>Followers list</li>
-                <li>Following list</li>
+                <li>${_t('step1_list1')}</li>
+                <li>${_t('step1_list2')}</li>
             </ul>
-            <p style="margin-top: 10px;">To find:</p>
+            <p style="margin-top: 10px;">${_t('step1_desc2')}</p>
             <ul>
-                <li>Users you follow that don't follow you back</li>
+                <li>${_t('step1_list3')}</li>
             </ul>
         </div>
 
         <div class="important-msg">
             <i class="ph ph-shield-check" style="font-size: 1.5rem;"></i>
-            <span><strong>No login required. No Instagram access.</strong><br>Your data never leaves your browser.</span>
+            <span><strong>${_t('step1_privacy1')}</strong><br>${_t('step1_privacy2')}</span>
         </div>
 
-        <button id="nextBtn" class="btn btn-nav-next" title="Next">
+        <button id="nextBtn" class="btn btn-nav-next">
             <i class="ph ph-arrow-right"></i>
         </button>
     `;
@@ -132,23 +248,28 @@ function step1() {
 
 function step2() {
     return `
-        <h2 class="title-gradient">How to Download Your Data</h2>
-        <p class="subtitle">Request your metadata directly from Instagram's settings.</p>
+        <h2 class="title-gradient">${_t('step2_title')}</h2>
+        <p class="subtitle" style="font-size: 0.95rem; margin-bottom: 1rem;">${_t('step2_subtitle')}</p>
 
-        <ol class="instruction-list">
-            <li><div class="step-num">1</div> Go to Instagram</li>
-            <li><div class="step-num">2</div> Settings</li>
-            <li><div class="step-num">3</div> Accounts Center</li>
-            <li><div class="step-num">4</div> Your information and permissions</li>
-            <li><div class="step-num">5</div> Download your information</li>
-            <li><div class="step-num">6</div> Request download in <strong>JSON</strong> format</li>
+        <ol class="instruction-list" style="font-size: 0.9rem; margin: 1rem 0;">
+            <li><div class="step-num">1</div> ${_t('step2_s1')}</li>
+            <li><div class="step-num">2</div> ${_t('step2_s2')}</li>
+            <li><div class="step-num">3</div> ${_t('step2_s3')}</li>
+            <li><div class="step-num">4</div> ${_t('step2_s4')}</li>
+            <li><div class="step-num">5</div> ${_t('step2_s5')}</li>
+            <li><div class="step-num">6</div> ${_t('step2_s6')}</li>
+            <li><div class="step-num">7</div> ${_t('step2_s7')}</li>
+            <li><div class="step-num">8</div> ${_t('step2_s8')}</li>
+            <li><div class="step-num">9</div> ${_t('step2_s9')}</li>
+            <li><div class="step-num">10</div> ${_t('step2_s10')}</li>
+            <li><div class="step-num">11</div> ${_t('step2_s11')}</li>
         </ol>
 
-        <p style="color: var(--text-secondary);">
-            <i class="ph ph-envelope-simple"></i> Instagram will send you an email with a download link when it's ready.
+        <p style="color: var(--text-secondary); font-size: 0.85rem;">
+            <i class="ph ph-envelope-simple"></i> ${_t('step2_wait')}
         </p>
 
-        <button id="nextBtn" class="btn btn-nav-next" title="Next">
+        <button id="nextBtn" class="btn btn-nav-next">
             <i class="ph ph-arrow-right"></i>
         </button>
     `;
@@ -156,183 +277,163 @@ function step2() {
 
 function step3() {
     return `
-        <h2 class="title-gradient">Extract the Files</h2>
-        <p class="subtitle">Unzip your downloaded archive and locate these specific files.</p>
+        <h2 class="title-gradient">${_t('step3_title')}</h2>
+        <p class="subtitle">${_t('step3_subtitle')}</p>
 
-        <div class="info-card">
-            <p>Navigate to this folder path in your unzipped folder:</p>
-            <div class="file-tree" style="margin-top: 1rem;">
-                📁 connections<br>
-                └─ 📁 followers_and_following<br>
-                &nbsp;&nbsp;&nbsp;├─ 📄 <span class="highlight">followers_1.json</span><br>
-                &nbsp;&nbsp;&nbsp;└─ 📄 <span class="highlight">following.json</span>
+        <div class="upload-grid" style="grid-template-columns: 1fr;">
+            <div class="dropzone ${state.files.zip ? 'success' : ''}" id="dropzone-zip" style="min-height: 250px;">
+                <i class="ph ${state.files.zip ? 'ph-check-circle' : 'ph-file-zip'}"></i>
+                <h4>${state.files.zip ? _t('step3_file_ready') : _t('step3_upload_zip')}</h4>
+                <p>${state.files.zip ? state.files.zip.name : _t('step3_drag')}</p>
+                <input type="file" id="input-zip" class="file-input" accept=".zip">
             </div>
         </div>
 
-        <button id="nextBtn" class="btn btn-nav-next" title="Next">
-            <i class="ph ph-arrow-right"></i>
-        </button>
+        <div style="display:flex; justify-content: flex-end; width:100%; margin-top:1rem;">
+            <button id="analyzeBtn" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius:16px;" ${!state.files.zip ? 'disabled' : ''}>
+                ${_t('step3_analyze')} <i class="ph ph-arrow-right"></i>
+            </button>
+        </div>
     `;
 }
 
 function step4() {
     return `
-        <h2 class="title-gradient">Upload the Files</h2>
-        <p class="subtitle">Drag and drop your JSON files below.</p>
-
-        <div class="upload-grid">
-            <div class="dropzone ${state.files.followers ? 'success' : ''}" id="dropzone-followers">
-                <i class="ph ${state.files.followers ? 'ph-check-circle' : 'ph-users'}"></i>
-                <h4>Upload Followers</h4>
-                <p>${state.files.followers ? state.files.followers.name : 'followers_1.json'}</p>
-                <input type="file" id="input-followers" class="file-input" accept=".json">
-            </div>
-
-            <div class="dropzone ${state.files.following ? 'success' : ''}" id="dropzone-following">
-                <i class="ph ${state.files.following ? 'ph-check-circle' : 'ph-user-plus'}"></i>
-                <h4>Upload Following</h4>
-                <p>${state.files.following ? state.files.following.name : 'following.json'}</p>
-                <input type="file" id="input-following" class="file-input" accept=".json">
-            </div>
-        </div>
-
-        <div style="display:flex; justify-content: flex-end; width:100%; margin-top:1rem;">
-            <button id="analyzeBtn" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius:16px;" ${(!state.files.followers || !state.files.following) ? 'disabled' : ''}>
-                Analyze Data <i class="ph ph-arrow-right"></i>
-            </button>
+        <div class="loader-container">
+            <div class="spinner"></div>
+            <h2 class="title-gradient">${_t('step4_analyzing')}</h2>
+            <p class="subtitle" style="text-align:center;">${_t('step4_desc')}</p>
         </div>
     `;
 }
 
 function step5() {
     return `
-        <div class="loader-container">
-            <div class="spinner"></div>
-            <h2 class="title-gradient">Analyzing your data...</h2>
-            <p class="subtitle" style="text-align:center;">Running matching algorithms locally.</p>
-        </div>
-    `;
-}
-
-function step6() {
-    return `
         <div class="results-header">
             <div>
-                <h2 class="title-gradient">Your Results</h2>
-                <p class="subtitle" style="margin-bottom:0;">Analysis complete.</p>
+                <h2 class="title-gradient">${_t('step5_title')}</h2>
+                <p class="subtitle" style="margin-bottom:0;">${_t('step5_subtitle')}</p>
             </div>
             <button id="exportBtn" class="btn">
-                <i class="ph ph-download-simple"></i> Download Results
+                <i class="ph ph-download-simple"></i> ${_t('step5_download')}
             </button>
         </div>
 
         <div class="tabs">
             <button class="tab-btn ${state.activeTab === 'unfollowers' ? 'active' : ''}" data-tab="unfollowers">
-                Not Following Back <span class="tab-badge">${state.results.unfollowers.length}</span>
+                ${_t('step5_tab1')} <span class="tab-badge">${state.results.unfollowers.length}</span>
             </button>
             <button class="tab-btn ${state.activeTab === 'fans' ? 'active' : ''}" data-tab="fans">
-                Fans <span class="tab-badge">${state.results.fans.length}</span>
+                ${_t('step5_tab2')} <span class="tab-badge">${state.results.fans.length}</span>
             </button>
             <button class="tab-btn ${state.activeTab === 'mutuals' ? 'active' : ''}" data-tab="mutuals">
-                Mutuals <span class="tab-badge">${state.results.mutuals.length}</span>
+                ${_t('step5_tab3')} <span class="tab-badge">${state.results.mutuals.length}</span>
             </button>
         </div>
 
         <div class="search-box">
             <i class="ph ph-magnifying-glass"></i>
-            <input type="text" id="searchInput" placeholder="Search username...">
+            <input type="text" id="searchInput" placeholder="${_t('step5_search')}">
         </div>
 
         <div class="user-grid" id="userGrid">
             <!-- Rendered via JS -->
         </div>
+        
+        <div style="margin-top: 1rem;">
+           <button class="btn" onclick="location.reload()" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+               <i class="ph ph-arrow-counter-clockwise"></i> ${_t('step5_start_over')}
+           </button>
+        </div>
     `;
 }
 
 
-// Setup drag and drop for step 4
-function setupDropzones() {
-    ['followers', 'following'].forEach(type => {
-        const dropzone = document.getElementById(`dropzone-${type}`);
-        const input = document.getElementById(`input-${type}`);
+// Setup drag and drop for step 3
+function setupDropzone() {
+    const dropzone = document.getElementById('dropzone-zip');
+    const input = document.getElementById('input-zip');
 
-        if (!dropzone || !input) return;
+    if (!dropzone || !input) return;
 
-        dropzone.addEventListener('click', () => input.click());
+    dropzone.addEventListener('click', () => input.click());
 
-        input.addEventListener('change', (e) => {
-            if (e.target.files.length) {
-                handleFile(type, e.target.files[0]);
-            }
-        });
+    input.addEventListener('change', (e) => {
+        if (e.target.files.length) {
+            handleFile(e.target.files[0]);
+        }
+    });
 
-        dropzone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropzone.classList.add('dragover');
-        });
+    dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+    });
 
-        dropzone.addEventListener('dragleave', () => {
-            dropzone.classList.remove('dragover');
-        });
+    dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+    });
 
-        dropzone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropzone.classList.remove('dragover');
-            if (e.dataTransfer.files.length) {
-                handleFile(type, e.dataTransfer.files[0]);
-            }
-        });
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files.length) {
+            handleFile(e.dataTransfer.files[0]);
+        }
     });
 }
 
-function handleFile(type, file) {
-    if (file.name.endsWith('.json')) {
-        state.files[type] = file;
+function handleFile(file) {
+    if (file.name.endsWith('.zip')) {
+        state.files.zip = file;
         render(); // Re-render to update UI state (marks, button enabled)
     } else {
-        alert('Please upload a valid JSON file.');
+        alert(_t('step3_invalid'));
     }
 }
 
-// Data Processing Flow
+// Data Processing Flow using JSZip
 function processFiles() {
-    Promise.all([
-        readFileAsJSON(state.files.followers),
-        readFileAsJSON(state.files.following)
-    ]).then(([followersJSON, followingJSON]) => {
-        
-        // Simulating heavy processing for UX
-        setTimeout(() => {
+    if (typeof JSZip === 'undefined') {
+        alert(_t('step4_error_lib'));
+        state.step = 3;
+        render();
+        return;
+    }
+
+    // Wrap in setTimeout to let UI render the loading spinner
+    setTimeout(async () => {
+        try {
+            const zip = await JSZip.loadAsync(state.files.zip);
+            
+            // Look for followers_1.json and following.json anywhere in the zip
+            const followerFiles = zip.file(/followers_1\.json$/i);
+            const followingFiles = zip.file(/following\.json$/i);
+
+            if (followerFiles.length === 0 || followingFiles.length === 0) {
+                throw new Error(_t('step4_error_files'));
+            }
+
+            // Read contents
+            const followersText = await followerFiles[0].async("text");
+            const followingText = await followingFiles[0].async("text");
+
+            const followersJSON = JSON.parse(followersText);
+            const followingJSON = JSON.parse(followingText);
+
             extractData(followersJSON, followingJSON);
             calculateResults();
-            nextStep(); // Move to step 6
-        }, 1500);
+            nextStep(); // Move to step 5 (results)
 
-    }).catch(err => {
-        console.error("Error processing files", err);
-        alert("An error occurred reading the files. Ensure they are valid JSON.");
-        state.step = 4; // go back
-        render();
-    });
-}
-
-function readFileAsJSON(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = e => {
-            try {
-                resolve(JSON.parse(e.target.result));
-            } catch(err) {
-                reject(err);
-            }
-        };
-        reader.onerror = e => reject(e);
-        reader.readAsText(file);
-    });
+        } catch (err) {
+            console.error("Error Processing ZIP:", err);
+            alert(_t('step4_error_generic') + err.message);
+            state.step = 3; // go back
+            render();
+        }
+    }, 500);
 }
 
 // Extremely robust username extraction from Instagram's nested JSON
-// It searches for arrays named "string_list_data" and grabs their "value"
 function generateUsernames(jsonObj) {
     let users = new Set();
 
@@ -366,13 +467,13 @@ function calculateResults() {
     const followersSet = new Set(state.parsedData.followers);
     const followingSet = new Set(state.parsedData.following);
 
-    // Unfollowers: You follow them, but they aren't in your followers list
+    // Unfollowers
     state.results.unfollowers = state.parsedData.following.filter(u => !followersSet.has(u));
     
-    // Fans: They follow you, but they aren't in your following list
+    // Fans
     state.results.fans = state.parsedData.followers.filter(u => !followingSet.has(u));
 
-    // Mutuals: Intersection
+    // Mutuals
     state.results.mutuals = state.parsedData.following.filter(u => followersSet.has(u));
 }
 
@@ -392,7 +493,7 @@ function renderUsers() {
     if (displayList.length === 0) {
         grid.innerHTML = `<div class="empty-state">
             <i class="ph ph-ghost" style="font-size:3rem; margin-bottom:1rem;"></i>
-            <p>No users found in this category.</p>
+            <p>${_t('step5_empty')}</p>
         </div>`;
         return;
     }
@@ -419,11 +520,11 @@ function renderUsers() {
     grid.appendChild(fragment);
 }
 
-// Hook into post-render of step 6
+// Hook into post-render of step 5
 const originalRender = render;
 render = function() {
     originalRender();
-    if (state.step === 6) {
+    if (state.step === 5) {
         renderUsers();
     }
 }
@@ -431,7 +532,7 @@ render = function() {
 // Export logic
 function exportData() {
     const activeData = state.results[state.activeTab];
-    let content = "Instagram Username List\\n\\n";
+    let content = _t('step5_export_header') + "\\n\\n";
     content += activeData.join("\\n");
 
     const blob = new Blob([content], { type: 'text/plain' });
@@ -445,8 +546,12 @@ function exportData() {
     URL.revokeObjectURL(url);
 }
 
-// Initialization
+// Initialization - check browser locale
 document.addEventListener('DOMContentLoaded', () => {
-    // Start app
-    render();
+    // Detect preferred language
+    const userLang = navigator.language || navigator.userLanguage;
+    const initialLang = userLang.startsWith('es') ? 'es' : 'en';
+    
+    // Set initial toggle state and language
+    setLanguage(initialLang);
 });

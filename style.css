@@ -542,3 +542,40 @@ h1, h2, h3 {
     padding: 3rem;
     color: var(--text-secondary);
 }
+
+/* Language Switcher */
+.lang-switcher {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+}
+.lang-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.lang-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+.lang-btn.active {
+    color: var(--electric-blue);
+    border-color: var(--electric-blue);
+    background: rgba(0, 212, 255, 0.1);
+}
+@media (max-width: 600px) {
+    .lang-switcher {
+        top: 1rem;
+        right: 1rem;
+    }
+}
