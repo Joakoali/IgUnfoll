@@ -142,6 +142,7 @@ h1, h2, h3 {
 .title-gradient {
     background: linear-gradient(120deg, var(--electric-blue), var(--subtle-purple));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
     margin-bottom: 0.5rem;
@@ -269,34 +270,72 @@ h1, h2, h3 {
     max-width: 100%;
 }
 
-/* Numbered Steps */
-.instruction-list {
-    list-style: none;
+/* Instruction Timeline UI */
+.timeline {
+    position: relative;
     margin: 2rem 0;
-}
-
-.instruction-list li {
+    padding-left: 20px;
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: #e2e8f0;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-.step-num {
-    background: rgba(138, 43, 226, 0.2);
-    color: #c084fc;
-    border: 1px solid rgba(138, 43, 226, 0.4);
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--electric-blue), rgba(138, 43, 226, 0.2));
+    z-index: 0;
+}
+
+.timeline-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    z-index: 1;
+}
+
+.timeline-icon {
     width: 32px;
     height: 32px;
+    border-radius: 50%;
+    background: var(--dark-bg);
+    border: 2px solid var(--electric-blue);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    font-weight: bold;
-    font-family: var(--font-heading);
+    color: var(--electric-blue);
+    font-size: 1rem;
     flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    margin-left: -15px; /* Pull left over the timeline line */
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.85rem 1.2rem;
+    border-radius: 12px;
+    flex: 1;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 212, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.timeline-content strong {
+    color: var(--electric-blue);
+    font-weight: 600;
 }
 
 /* File Structure Example */

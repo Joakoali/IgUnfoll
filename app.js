@@ -14,17 +14,17 @@ const t = {
         
         step2_title: "How to Download Your Data",
         step2_subtitle: "Follow these steps in the Instagram app on your mobile:",
-        step2_s1: "Settings",
-        step2_s2: "Accounts Center",
-        step2_s3: "Your information and permissions",
-        step2_s4: "Download your information",
-        step2_s5: "Download or transfer information",
-        step2_s6: "Choose your Instagram account",
-        step2_s7: "Download to device",
-        step2_s8: "<strong>Customize information:</strong> Uncheck everything and select only \"Connections\" (Followers and following)",
-        step2_s9: "Date range: \"All time\"",
-        step2_s10: "Format: <strong>JSON</strong>",
-        step2_s11: "Create file",
+        step2_s1: "Go to Settings",
+        step2_s2: "Open Accounts Center",
+        step2_s3: "Navigate to Your information and permissions",
+        step2_s4: "Select Export your information",
+        step2_s5: "Click Create an export",
+        step2_s6: "Select the account you want to export",
+        step2_s7: "Set destination to Export to device",
+        step2_s8: "Under Customize information, deselect everything — keep only <strong>Connections</strong> (followers & following)",
+        step2_s9: "Choose your date range",
+        step2_s10: "Set the format to <strong>JSON</strong>",
+        step2_s11: "Click Start export",
         step2_wait: "Instagram will send you an email with your ZIP file when it's ready (Usually takes a few minutes).",
 
         step3_title: "Upload the ZIP File",
@@ -66,17 +66,17 @@ const t = {
         
         step2_title: "Cómo descargar tus datos",
         step2_subtitle: "Sigue estos pasos en la app de Instagram desde tu móvil:",
-        step2_s1: "Configuración",
-        step2_s2: "Centro de cuentas",
-        step2_s3: "Tu información y permisos",
-        step2_s4: "Descargar tu información",
-        step2_s5: "Descargar o transferir información",
-        step2_s6: "Elige tu cuenta de Instagram",
-        step2_s7: "Descargar al dispositivo",
-        step2_s8: "<strong>Personalizar información:</strong> Quita todo y selecciona solo \"Conexiones\" (Seguidores y seguidos)",
-        step2_s9: "Intervalo de fechas: \"Desde el principio\"",
-        step2_s10: "Formato: <strong>JSON</strong>",
-        step2_s11: "Crear archivo",
+        step2_s1: "Ve a Configuración",
+        step2_s2: "Abre el Centro de cuentas",
+        step2_s3: "Dirígete a Tu información y permisos",
+        step2_s4: "Selecciona Exportar tu información",
+        step2_s5: "Pulsa Crear una exportación",
+        step2_s6: "Elige la cuenta que quieres exportar",
+        step2_s7: "Selecciona Exportar al dispositivo como destino",
+        step2_s8: "En Personalizar información, desmarca todo — deja solo <strong>Conexiones</strong> (seguidores y seguidos)",
+        step2_s9: "Elige el intervalo de fechas",
+        step2_s10: "Selecciona el formato <strong>JSON</strong>",
+        step2_s11: "Pulsa Iniciar exportación",
         step2_wait: "Instagram te enviará un email con tu archivo ZIP cuando esté listo (Suele tardar minutos).",
 
         step3_title: "Sube el Archivo ZIP",
@@ -251,19 +251,52 @@ function step2() {
         <h2 class="title-gradient">${_t('step2_title')}</h2>
         <p class="subtitle" style="font-size: 0.95rem; margin-bottom: 1rem;">${_t('step2_subtitle')}</p>
 
-        <ol class="instruction-list" style="font-size: 0.9rem; margin: 1rem 0;">
-            <li><div class="step-num">1</div> ${_t('step2_s1')}</li>
-            <li><div class="step-num">2</div> ${_t('step2_s2')}</li>
-            <li><div class="step-num">3</div> ${_t('step2_s3')}</li>
-            <li><div class="step-num">4</div> ${_t('step2_s4')}</li>
-            <li><div class="step-num">5</div> ${_t('step2_s5')}</li>
-            <li><div class="step-num">6</div> ${_t('step2_s6')}</li>
-            <li><div class="step-num">7</div> ${_t('step2_s7')}</li>
-            <li><div class="step-num">8</div> ${_t('step2_s8')}</li>
-            <li><div class="step-num">9</div> ${_t('step2_s9')}</li>
-            <li><div class="step-num">10</div> ${_t('step2_s10')}</li>
-            <li><div class="step-num">11</div> ${_t('step2_s11')}</li>
-        </ol>
+        <div class="timeline">
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-gear"></i></div>
+                <div class="timeline-content">${_t('step2_s1')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-user-square"></i></div>
+                <div class="timeline-content">${_t('step2_s2')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-shield-check"></i></div>
+                <div class="timeline-content">${_t('step2_s3')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-export"></i></div>
+                <div class="timeline-content">${_t('step2_s4')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-plus-circle"></i></div>
+                <div class="timeline-content">${_t('step2_s5')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-users"></i></div>
+                <div class="timeline-content">${_t('step2_s6')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-device-mobile"></i></div>
+                <div class="timeline-content">${_t('step2_s7')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-faders"></i></div>
+                <div class="timeline-content">${_t('step2_s8')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-calendar-blank"></i></div>
+                <div class="timeline-content">${_t('step2_s9')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-file-code"></i></div>
+                <div class="timeline-content">${_t('step2_s10')}</div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon"><i class="ph ph-play-circle"></i></div>
+                <div class="timeline-content">${_t('step2_s11')}</div>
+            </div>
+        </div>
 
         <p style="color: var(--text-secondary); font-size: 0.85rem;">
             <i class="ph ph-envelope-simple"></i> ${_t('step2_wait')}
